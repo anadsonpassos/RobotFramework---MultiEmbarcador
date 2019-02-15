@@ -12,8 +12,8 @@ Abrir Navegador
     Open Browser    ${URL}      ${Browser}
     Set Selenium Timeout        15 seconds
 
-Fechar Navegador
-    Close Browser
+# Fechar Navegador
+#     Close Browser
 
 ###CENARIO 1
 Dado que eu estou na tela de login do sistema
@@ -45,6 +45,7 @@ DADO que estou na tela de pesquisa por filtros
     Click Element        //*[@id="knotPesquisa"]/section/button[1]
     Page Should Contain     Nº da Carga:
     Page Should Contain     Filial:
+
 QUANDO eu pesquisar a carga existente com os parametros "numero e filial"
     Wait Until Element is Visible       //input[contains(@data-bind,'CodigoCargaEmbarcador.id')]
     Input Text      //input[contains(@data-bind,'CodigoCargaEmbarcador.id')]     3224
@@ -56,14 +57,20 @@ QUANDO eu pesquisar a carga existente com os parametros "numero e filial"
     Capture Element Screenshot      //*[(@class='paginate_button next')]//a[contains(text(),'Próximo')]
     Wait Until Element is Visible       //*[@id="11"]/td[5] 
     Click Element      //*[@id="11"]/td[5]
-    Capture Element Screenshot      //*[@id="11"]/td[5]
-    Wait Until Element is Visible       //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
-    Click Element        //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
-
-#ENTAO a carga existente deve ser mostrada
+    # Wait Until Element is Visible       //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
+    # Click Element        //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
+    
+ENTAO a carga existente deve ser mostrada
+    Set Focus To Element        fdsCargas
+   # Wait Until Element is Visible       ${TEXTO}    Get Element Attribute   //[@id="wid-id-3"]/div/div[2]//[@id="fdsCargas"]//[@class='row detalhesCarga']//[@class='col col-12']//*[@data-bind='html: Descricao.val']      innerHTML
+#Log 		${TEXTO}
+    Title Should Be     ${TEXTO}    Get Element Attribute   //[@id="wid-id-3"]/div/div[2]//[@id="fdsCargas"]//[@class='row detalhesCarga']//[@class='col col-12']//*[@data-bind='html: Descricao.val']      innerHTML
+Log 		${TEXTO}
 
 # E acionar o botao Cargas Novas
 #     Wait Until Element is Visible        //*[@id="knotPesquisa"]/section/button[2]
 #     Click Element       //*[@id="knotPesquisa"]/section/button[2]
 
-
+#//*[@id="wid-id-3"]/header/h2
+#//*[@id="widget-grid"]/div[1]/div[1]/h2
+#//*[@id="wid-id-3"]
