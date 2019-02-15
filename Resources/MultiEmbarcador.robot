@@ -10,7 +10,9 @@ ${URL}     https://carrefourhomo.multiembarcador.com.br/Login
 ###Setup e Teardown
 Abrir Navegador
     Open Browser    ${URL}      ${Browser}
+    Set Window Size     1366    768
     Set Selenium Timeout        15 seconds
+    
 
 # Fechar Navegador
 #     Close Browser
@@ -61,16 +63,10 @@ QUANDO eu pesquisar a carga existente com os parametros "numero e filial"
     # Click Element        //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
     
 ENTAO a carga existente deve ser mostrada
-    Set Focus To Element        fdsCargas
-   # Wait Until Element is Visible       ${TEXTO}    Get Element Attribute   //[@id="wid-id-3"]/div/div[2]//[@id="fdsCargas"]//[@class='row detalhesCarga']//[@class='col col-12']//*[@data-bind='html: Descricao.val']      innerHTML
-#Log 		${TEXTO}
-    Title Should Be     ${TEXTO}    Get Element Attribute   //[@id="wid-id-3"]/div/div[2]//[@id="fdsCargas"]//[@class='row detalhesCarga']//[@class='col col-12']//*[@data-bind='html: Descricao.val']      innerHTML
+    ${TEXTO}    Get Element Attribute   //span[contains(@data-bind,'Descricao.val')]      innerHTML
 Log 		${TEXTO}
+    Should Contain      ${TEXTO}    Carga 3224
 
 # E acionar o botao Cargas Novas
 #     Wait Until Element is Visible        //*[@id="knotPesquisa"]/section/button[2]
 #     Click Element       //*[@id="knotPesquisa"]/section/button[2]
-
-#//*[@id="wid-id-3"]/header/h2
-#//*[@id="widget-grid"]/div[1]/div[1]/h2
-#//*[@id="wid-id-3"]
