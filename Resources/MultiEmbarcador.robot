@@ -59,8 +59,8 @@ QUANDO eu pesquisar a carga existente com os parametros "numero e filial"
     Capture Element Screenshot      //*[(@class='paginate_button next')]//a[contains(text(),'Próximo')]
     Wait Until Element is Visible       //*[@id="11"]/td[5] 
     Click Element      //*[@id="11"]/td[5]
-    # Wait Until Element is Visible       //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
-    # Click Element        //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
+    Wait Until Element is Visible       //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
+    Click Element        //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
     
 ENTAO a carga existente deve ser mostrada
     ${TEXTO}    Get Element Attribute   //span[contains(@data-bind,'Descricao.val')]      innerHTML
