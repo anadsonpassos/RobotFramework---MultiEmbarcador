@@ -49,9 +49,9 @@ DADO que estou na tela de pesquisa por filtros
     Page Should Contain     Nº da Carga:
     Page Should Contain     Filial:
 
-QUANDO eu pesquisar a carga existente com os parametros "numero e filial"
+QUANDO eu pesquisar a carga existente com os parametros "CargaNumero" ${NumeroCarga} e "filial"
     Wait Until Element is Visible       //input[contains(@data-bind,'CodigoCargaEmbarcador.id')]
-    Input Text      //input[contains(@data-bind,'CodigoCargaEmbarcador.id')]     3224
+    Input Text      //input[contains(@data-bind,'CodigoCargaEmbarcador.id')]     ${NumeroCarga}
     wait Until Element is Visible       //button[contains(@data-bind,'Filial.idBtnSearch')]
     Click Element       //button[contains(@data-bind,'Filial.idBtnSearch')] 
     Set Focus To Element        //*[contains(text(),'Buscar Filiais')]
@@ -66,7 +66,7 @@ QUANDO eu pesquisar a carga existente com os parametros "numero e filial"
 ENTAO a carga existente deve ser mostrada
     ${TEXTO}    Get Element Attribute   //span[contains(@data-bind,'Descricao.val')]      innerHTML
 Log 		${TEXTO}
-    Should Contain      ${TEXTO}    Carga 3224
+    Should Contain      ${TEXTO}    Carga ${NumeroCarga}
 
 # E acionar o botao Cargas Novas
 #     Wait Until Element is Visible        //*[@id="knotPesquisa"]/section/button[2]

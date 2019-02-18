@@ -29,7 +29,7 @@ Cenario 2 - Listagem de cargas
 
 Cenario 3: Consulta de cargas
     DADO que estou na tela de pesquisa por filtros
-    QUANDO eu pesquisar a carga existente com os parametros "numero e filial"
+    QUANDO eu pesquisar a carga existente com os parametros "CargaNumero" 3224 e "filial"
     ENTAO a carga existente deve ser mostrada
 
     # E acionar o botao Cargas Novas
