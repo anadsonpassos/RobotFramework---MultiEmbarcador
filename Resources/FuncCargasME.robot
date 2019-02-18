@@ -6,6 +6,8 @@ Library     SeleniumLibrary
 ${Browser}      chrome
 ${URL}     https://carrefourhomo.multiembarcador.com.br/Login
 
+# Consulta de uma carga existente valida - Menu de Cargas.
+
 *** Keywords ***
 ###Setup e Teardown
 Abrir Navegador
@@ -13,9 +15,8 @@ Abrir Navegador
     Set Window Size     1366    768
     Set Selenium Timeout        15 seconds
     
-
-# Fechar Navegador
-#     Close Browser
+Fechar Navegador
+     Close Browser
 
 ###CENARIO 1
 Dado que eu estou na tela de login do sistema

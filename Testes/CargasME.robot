@@ -1,6 +1,8 @@
 *** Settings ***
 Resource        ../Resources/FuncCargasME.robot
 
+# Consulta de uma carga existente valida - Menu de Cargas.
+
 ### Setup ele roda Keyword antes da suite ou de um teste
 ### TearDown ele roda keyword depois de uma suite ou um teste
 Suite Setup     Abrir Navegador                                 ### Roda antes da suite
