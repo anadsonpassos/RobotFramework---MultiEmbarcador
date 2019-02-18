@@ -1,5 +1,5 @@
 *** Settings ***
-Resource        ../Resources/MultiEmbarcador.robot
+Resource        ../Resources/FuncCargasME.robot
 
 ### Setup ele roda Keyword antes da suite ou de um teste
 ### TearDown ele roda keyword depois de uma suite ou um teste
