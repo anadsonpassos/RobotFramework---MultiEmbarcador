@@ -1,34 +1,33 @@
+Documentation       Consulta de carga existente valida - Menu de Cargas.
+
 *** Settings ***
 Library     SeleniumLibrary
 
 *** Variables ***
-
-${Browser}      chrome
-${URL}     https://carrefourhomo.multiembarcador.com.br/Login
-
-# Consulta de uma carga existente valida - Menu de Cargas.
+${NumeroCarga}      3224
 
 *** Keywords ***
 ###Setup e Teardown
-Abrir Navegador
-    Open Browser    ${URL}      ${Browser}
-    Set Window Size     1366    768
-    Set Selenium Timeout        15 seconds
+# Abrir Navegador
+#     Open Browser    ${URL}      ${Browser}
+#     Set Window Size     1366    768
+#     Set Selenium Timeout        15 seconds
     
-Fechar Navegador
-     Close Browser
+# Fechar Navegador
+#      Close Browser
 
 ###CENARIO 1
-Dado que eu estou na tela de login do sistema
-    Page Should Contain     Acesso ao Sistema
+# Dado que eu estou na tela de login do sistema
+#     Page Should Contain     Acesso ao Sistema
     
-Quando o usuario logar com login e senha validos
-    Input Text      //*[@id="login-form"]/fieldset/section[1]/label[2]/input    anadson_silva
-    Input Text      //*[@id="login-form"]/fieldset/section[2]/label[2]/input    An@dson1031 
-    Click Button        //*[@id="login-form"]/footer/button
+# Quando o usuario logar com login e senha validos
+#     Input Text      //*[@id="login-form"]/fieldset/section[1]/label[2]/input    anadson_silva
+#     Input Text      //*[@id="login-form"]/fieldset/section[2]/label[2]/input    An@dson1031 
+#     Click Button        //*[@id="login-form"]/footer/button
+#     Capture Page Screenshot     Logado_na_tela_HOME.png
 
-Entao a pagina home deve ser mostrada
-    Title Should Be     Home
+# Entao a pagina home deve ser mostrada
+#     Title Should Be     Home
 
 ###CENARIO 2
 DADO que estou na tela de Cargas

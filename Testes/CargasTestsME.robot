@@ -1,20 +1,21 @@
+Documentation       Consulta de uma carga existente valida - Menu de Cargas.
+
 *** Settings ***
 Resource        ../Resources/FuncCargasME.robot
-
-# Consulta de uma carga existente valida - Menu de Cargas.
+Resource        ../Resources/ResourceCommon.robot
 
 ### Setup ele roda Keyword antes da suite ou de um teste
 ### TearDown ele roda keyword depois de uma suite ou um teste
-Suite Setup     Abrir Navegador                                 ### Roda antes da suite
-Suite Teardown      Fechar Navegador                            ### Roda depois da suite
-# Test Setup      Abrir Navegador                                 ### Roda antes do teste
-# Test Teardown       Fechar Navegador                              ### Roda depois do teste
+Suite Setup     Open Browser To Login valid                ### Roda antes da suite
+Suite Teardown      Close Browser                          ### Roda depois da suite
+#Test Setup      Login Page Should Be Open                 ### Roda antes do teste
+# Test Teardown       Fechar Navegador                     ### Roda depois do teste
 
 *** Test Cases ***
-Cenario 1: Validar Login
-    DADO que eu estou na tela de login do sistema
-    QUANDO o usuario logar com login e senha validos 
-    ENTAO a pagina home deve ser mostrada
+# Cenario 1: Validar Login
+#     DADO que eu estou na tela de login do sistema
+#     QUANDO o usuario logar com login e senha validos 
+#     ENTAO a pagina home deve ser mostrada
 
 # Cenario 2: Entrar na tela pesquisa de carga
 #     Dado que esteja logado no sistema MultiEmbarcador
