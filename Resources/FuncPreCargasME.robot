@@ -36,22 +36,28 @@ Dado que estou na tela do Windows
     Sleep    1s
     Capture Element Screenshot      //input[@value='Importar'] 
 
-Quando eu importar o arquivo 
-    Win Wait Active
-    Control Focus       strTitle=Open     strText=${EMPTY}       strControl=Edit1
-    Control Set Text        strTitle=Open       strText=${EMPTY}        strControl=Edit1        strControlText=C:\\Users\\Anadsonp\\Desktop\\PreCarga_Integracao\\Teste.xlsx
-    Control Click       strTitle=Open   strText=&Open       strControl=Button1      strButton=LEFT      nNumClicks=1
+Quando eu importar o arquivo desejado
+    #Win Wait Active     WindowTitle=Abrir
+    Control Focus       strTitle=Abrir     strText=${EMPTY}       strControl=Edit1
+    Control Set Text        strTitle=Abrir       strText=${EMPTY}        strControl=Edit1        strControlText=C:\\Users\\brext897\\Desktop\\PreCarga_Integracao\\Teste.xlsx
+    Control Click       strTitle=Abrir     strText=&Abrir       strControl=Button1
+    Win Wait Active     WindowTitle=Abrir
+    Control Focus       strTitle=Abrir     strText=${EMPTY}       strControl=Edit1
+    Send        Teste.xlsx
+    Send        {Enter}
+    #Control Click       strTitle=Open   strText=&Open       strControl=Button1      strButton=LEFT      nNumClicks=1
     
+    #  Win Wait Active     ${TELA_SELECIONAR_ARQUIVO}
+    # Control Focus       strTitle=${CAMPONOMEARQUIVO.title}
+    # ...                 strText=${CAMPONOMEARQUIVO.text}
+    # ...                 strControl=${CAMPONOMEARQUIVO.control}
+    # Send                ${ARQUIVO}
+    # Control Click       strTitle=${BOTAOABRIRARQUIVO.title}
+    # ...                 strText=${BOTAOABRIRARQUIVO.text}
+    # ...                 strControl=${BOTAOABRIRARQUIVO.control}
     # Control Focus       strTitle=Open     strText=${EMPTY}       strControl=Edit1
     # Control Set Text        strTitle=Open       strText=${EMPTY}        strControl=Edit1        strControlText=C:\\Users\\Anadsonp\\Desktop\\PreCarga_Integracao\\Teste.xlsx
-    # # Send        C:\\Users\\Anadsonp\\Desktop\\PreCarga_Integracao\\Teste.xlsx    
-    # #Send    {Enter}   
-    # # Control Focus       strTitle=Open      strText=&Open    strControl=Button1
-    # # Capture Page Screenshot      
-    # # Sleep       3s
     # Control Click       strTitle=Open     strText=${EMPTY}       strControl=Button1
-    # strTitle=, strText=, strControl=, strButton=LEFT, nNumClicks=1, nX=-2147483647, nY=-2147483647
-    # Choose File      C:\\Users\\Anadsonp\\Desktop\\PreCarga_Integracao    ${CURDIR}    ${/}Teste.xlsx
     
 # E pesquisar a configuracao de coluna das PreCargas ja definido
 #     Title Should Be     Importação de Arquivo
