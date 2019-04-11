@@ -5,6 +5,7 @@ Library     AutoItLibrary
 
 *** Variables ***
 ${URLPreCarga}      https://carrefourhomo.multiembarcador.com.br/#PreCargas/PreCarga
+${DescColuna}       PRECARGA V5
 
 *** Keywords ***
 ###CENARIO 1
@@ -29,16 +30,17 @@ Entao a tela de PreCargas deve ser mostrada
 
 ###CENARIO 2
 Dado que estou na tela do Windows
+    Sleep       5s
     Wait Until Element Is Visible       //input[@value='Importar']     
-    Sleep       10s
+    Sleep       5s
     Set Focus To Element        //input[@value='Importar']      
     Press Keys    //input[@value='Importar']    SPACE 
-    Sleep    1s
-    Capture Element Screenshot      //input[@value='Importar'] 
+    Sleep       5s
+    #Capture Element Screenshot      //input[@value='Importar'] 
 
-Quando eu importar o arquivo desejado
-    #Win Wait Active     WindowTitle=Abrir
-    Control Focus       strTitle=Abrir     strText=${EMPTY}       strControl=Edit1
+Quando eu importar o arquivo desejado das PreCargas
+    Win Wait Active     WindowTitle=Abrir
+    AutoItLibrary.Control Focus       strTitle=Abrir     strText=${EMPTY}       strControl=Edit1
     Control Set Text        strTitle=Abrir       strText=${EMPTY}        strControl=Edit1        strControlText=C:\\Users\\brext897\\Desktop\\PreCarga_Integracao\\Teste.xlsx
     Control Click       strTitle=Abrir     strText=&Abrir       strControl=Button1
     Win Wait Active     WindowTitle=Abrir
@@ -59,14 +61,25 @@ Quando eu importar o arquivo desejado
     # Control Set Text        strTitle=Open       strText=${EMPTY}        strControl=Edit1        strControlText=C:\\Users\\Anadsonp\\Desktop\\PreCarga_Integracao\\Teste.xlsx
     # Control Click       strTitle=Open     strText=${EMPTY}       strControl=Button1
     
-# E pesquisar a configuracao de coluna das PreCargas ja definido
-#     Title Should Be     Importação de Arquivo
-#     Wait Until Element Is Visible       ///*[@data-bind="attr: { id: ConfiguracaoColuna.idBtnSearch}"]
-#     Sleep       5s
-#     Set Focus To Element        //*[@data-bind="attr: { id: ConfiguracaoColuna.idBtnSearch}"]
-#     Click Button        //*[@data-bind="attr: { id: ConfiguracaoColuna.idBtnSearch}"]
-#     Capture Element Screenshot      //*[@data-bind="attr: { id: ConfiguracaoColuna.idBtnSearch}"]
-#     Sleep       3s
+E pesquisar a configuracao de coluna das PreCargas ja definido
+    Set Focus To Element      //*[@data-bind="visible: ConfiguracaoColuna.visible"]
+    #Title Should Be     Pré Cargas
+    Wait Until Element Is Visible       //*[@data-bind="attr: { id: ConfiguracaoColuna.idBtnSearch}"]
+    Sleep       5s
+    Set Focus To Element        //*[@data-bind="attr: { id: ConfiguracaoColuna.idBtnSearch}"]
+    Click Button        //*[@data-bind="attr: { id: ConfiguracaoColuna.idBtnSearch}"]
+    Capture Element Screenshot      //*[@data-bind="attr: { id: ConfiguracaoColuna.idBtnSearch}"]
+    Sleep       3s
+    Set Focus to Element        //*[@id="myModalLabel"]
+    Sleep       5s
+    Input Text      //div[contains(@class,"modal-dialog modal-lg")]//input[contains(@data-bind,"value: Descricao.val, valueUpdate:") and contains(@data-bind,"afterkeydown") and contains(@data-bind, "attr")]        ${DescColuna}
+    Click Button      //*[@data-bind="click: Pesquisar.eventClick, attr : { id: Pesquisar.id }"]
+    Sleep       5s
+    Click Element      //*[@id="19"]/td[2]/a
+    Sleep       3s
+    Set Focus To Element         //*[@class="table-container"]
+    Click Element        th[data-width="150"]/*option[value="removecoluna"]thead/tr/th[4]/select/option[6]        
+    #//*[@data-bind="value: Descricao.val, valueUpdate: 'afterkeydown',  attr: { maxlength: Descricao.maxlength, id : Descricao.id, }"]        AnadsonAutomacao
 
 # E processar o arquivo
 #     Title Should Be     Buscar Configuração de Coluna

@@ -17,8 +17,8 @@ CENARIO 1: Acessar a tela de Pre-Cargas
 
 CENARIO 2: Importar um arquivo na tela de PreCargas
     Dado que estou na tela do Windows
-    Quando eu importar o arquivo desejado
-    # E pesquisar a configuracao de coluna das PreCargas ja definido
+    Quando eu importar o arquivo desejado das PreCargas
+    E pesquisar a configuracao de coluna das PreCargas ja definido
     # E processar o arquivo 
     # ENTAO a tela com a listagem das PreCargas deve ser exibida
     
