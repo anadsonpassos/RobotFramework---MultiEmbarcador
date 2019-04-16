@@ -16,10 +16,11 @@ CENARIO 1: Acessar a tela de Pre-Cargas
 #     Entao as PreCargas deve ser mostrada 
 
 CENARIO 2: Importar um arquivo na tela de PreCargas
-    Dado que estou na tela do Windows
-    Quando eu importar o arquivo desejado das PreCargas
+    DADO que estou na tela do Windows
+    QUANDO eu importar o arquivo desejado das PreCargas
     E pesquisar a configuracao de coluna das PreCargas ja definido
-    # E processar o arquivo 
-    # ENTAO a tela com a listagem das PreCargas deve ser exibida
+    E processar o arquivo escolhido
+    ENTAO a tela de Importacao de Arquivo deve apresentar os arquivos processados com sucesso
+    E baixar o retorno do processamento do arquivo
     
           
