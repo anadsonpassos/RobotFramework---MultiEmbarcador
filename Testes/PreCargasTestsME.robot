@@ -1,6 +1,6 @@
 *** Settings ***
-Resource        ../Resources/FuncPreCargasME.robot
 Resource        ../Resources/ResourceCommon.robot
+Resource        ../Resources/FuncPreCargasME.robot
 Suite Setup     Open Browser To Login valid
 #Suite Teardown      Close Browser 
 
