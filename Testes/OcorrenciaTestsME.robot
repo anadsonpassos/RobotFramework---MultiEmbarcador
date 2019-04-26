@@ -12,10 +12,12 @@ CENARIO 1: Acessar a tela de Ocorrencia
 
 CENARIO 2: Gerar Ocorrencia
     Dado que eu tenha acesso para cadastra Ocorrencia
-    Quando eu escolher um Tipo de Ocorrencia no campo especifico
-    # E Escolher a carga para a gerada Ocorrencia
-    # E esolher os CTes pertencentes a carga escolhida
-    # E informar o valor da Ocorrencia
-    # E informar uma observacao referente a Ocorrencia
+    Quando eu escolher um Tipo de Ocorrencia
+    E escolher a quinzena que desejo gerar a Ocorrencia
+    E escolher o Transportador para qual quero gerar a Ocorrencia
+    E informar uma observacao referente a Ocorrencia
+    E informar o valor da Ocorrencia
+    E informar uma observacao que devera ser impressa no CTE
+
     # E clicar no botao Adicionar
     # Entao o sistema deve cadastrar a Ocorrencia com sucesso
