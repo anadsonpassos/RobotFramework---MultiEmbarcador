@@ -7,35 +7,77 @@ Library     AutoItLibrary
 ${URLOcorrencia}      https://carrefourhomo.multiembarcador.com.br/#Ocorrencias/Ocorrencia
 ${Saudacao}     Bem vindo ao Multi Embarcador
 ${NomeTelaOcorrencia}       Ocorrências de Carga
+${NomeOcorrencia}       DomingosFeriados
+${CNPJ}     00766315000144
+${ObsOcorrencia}        Testes de automação para que seja facilitado o nosso dia-a-dia no trabalho.
+${ValorOcorrencia}      350,99
+${ObservacaoCTe}        O documento tem valor fiscal, portanto emita para testes somente no ambiente de homologação.
 
 *** Keywords ***
 ###CENARIO 1: Acessar a tela de Ocorrencia
 Dado que eu estou logado no sistema
     Title Should Be     Home
-    Sleep       3s
+    Sleep       5s
     Element Should Be Focused        //html//body[@class="smart-style-0 desktop-detected"]
+    Sleep       7s
     Element Should Contain      //*[@id="saudacao"]      ${Saudacao}
-    Sleep       3s
+    Sleep       5s
 
 Quando eu acessar menu Ocorrencias e sub-menu Ocorrencia
     Go To       ${URLOcorrencia}
-    Sleep       3s
+    Sleep       5s
 
 Entao a tela Ocorrencia de Carga deve ser mostrada
     Element Should Be Focused        //html//body[@class="smart-style-0 desktop-detected"]
-    Element Should Contain      //*[@id="content"]      ${NomeTelaOcorrencia}
+    Sleep       7s
+    Element Should Contain      //*[@id="content"]//*[@id="widget-grid"]/div[1]/div[1]/h2      ${NomeTelaOcorrencia}
+    Sleep       7s
 
 ####CENARIO 2: Gerar Ocorrencia
 Dado que eu tenha acesso para cadastra Ocorrencia
     Element Should Contain      //*[@id="knockoutCadastroDeOcorrencia"]/div[1]/header       Cadastrar Ocorrência
 
-Quando eu escolher um Tipo de Ocorrencia no campo especifico
+Quando eu escolher um Tipo de Ocorrencia
     Click Button        //*[@data-bind="enable : TipoOcorrencia.enable,attr: { id: TipoOcorrencia.idBtnSearch}"]
-    Sleep       3s
-    Click Element       //*[@id="1071"]/td[5]/a 
-# E Escolher a carga para a gerada Ocorrencia
-# E esolher os CTes pertencentes a carga escolhida
-# E informar o valor da Ocorrencia
-# E informar uma observacao referente a Ocorrencia
+    Wait Until Element Is Visible       //div[contains(@tabindex,"-1")]//input[contains(@data-bind,"value: Descricao.val, valueUpdate:")]
+    Input Text      //div[contains(@tabindex,"-1")]//input[contains(@data-bind,"value: Descricao.val, valueUpdate:")]     ${NomeOcorrencia}     
+    Sleep       4s
+    Click Button    //button[@data-bind="click: Pesquisar.eventClick, attr : { id: Pesquisar.id }"]
+    Sleep       10s
+    Wait Until Element Is Visible       //*[@id="1078"]/td[5]
+    Click Element       //*[@id="1078"]/td[5]
+    Sleep       8s
+    
+E escolher a quinzena que desejo gerar a Ocorrencia   
+    Click Element       //select[contains(@data-bind,"options: PeriodoQuinzena.options, optionsText: 'text'")]//option[2]
+    Sleep       8s
+    
+E escolher o Transportador para qual quero gerar a Ocorrencia    
+    Click Button        //section[10]//*[@data-bind="enable : Empresa.enable,attr: { id: Empresa.idBtnSearch}"]
+    Sleep       5s
+    Input Text        //input[contains(@data-bind,"value: CNPJ.val, valueUpdate: 'afterkeydown',")]     ${CNPJ}
+    Sleep       9s
+    Click Button        //div[contains(@class,"modal-dialog modal-lg")]//*[@class="btn btn-default btn-primary btnPesquisarFiltroPesquisa"]
+    Sleep       8s
+    Wait Until Element Is Visible       //*[@id="8"]/td[6]
+    Click Element       //*[@id="8"]/td[6]
+    Sleep       6s
+    
+E informar uma observacao referente a Ocorrencia    
+    Input Text      //textarea[contains(@data-bind,"value: Observacao.val,enable")]        ${ObsOcorrencia}
+    Sleep       5s
+
+E informar o valor da Ocorrencia
+    Input Text      //input[contains(@data-bind,"value: ValorOcorrencia.val")]      ${ValorOcorrencia}
+    Sleep       8s
+
+E informar uma observacao que devera ser impressa no CTE
+    Input Text      //*[@id="knockoutCadastroDeOcorrencia"]/div[2]/section[1]/div[2]/fieldset/div[5]/section        ${ObservacaoCTe}
+
 # E clicar no botao Adicionar
-# Entao o sistema deve cadastrar a Ocorrencia com sucesso       
+    #Click Element       //div[@id="knockoutCRUDCadastroOcorrencia"]//input[contains(@data-bind,"click: Adicionar.eventClick")]
+
+# # Entao o sistema deve cadastrar a Ocorrencia com sucesso       
+# //*[(@class="input")]//*[contains(@data-bind,"value: Descricao.val") and contains(@data-bind,"afterkeydown") and contains(@data-bind, "attr")]
+# //*[@class="input"]//*[@data-bind="value: Descricao.val, valueUpdate: 'afterkeydown',  attr: { maxlength: Descricao.maxlength, id : Descricao.id, }"]
+# //label[contains(@data-bind,"attr: { class: ObservacaoCTe.requiredClass}")]

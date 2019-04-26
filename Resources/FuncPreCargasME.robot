@@ -6,7 +6,7 @@ Library     AutoItLibrary
 *** Variables ***
 ${URLPreCarga}      https://carrefourhomo.multiembarcador.com.br/#PreCargas/PreCarga
 ${DescColuna}       AutomationImport
-${DescMenssagem}     Não é possível importar com previsão de chegada na doca retroativa.
+${DescMenssagem}        Processado com sucesso.
 
 *** Keywords ***
 ###CENARIO 1
@@ -74,7 +74,7 @@ ENTAO a tela de Importacao de Arquivo deve apresentar os arquivos processados co
     Set Focus To Element        //div[contains(@class,"modal-dialog modal-dialog-importacao")]//h4[contains(@class, "modal-title")]  
     Page Should Contain Element        //div[contains(@class,"modal-dialog modal-dialog-importacao")]//h4[contains(@class, "modal-title")]     Importação de Arquivo
     Set Focus To Element        //tbody/tr[1]/td[17]
-    Sleep       2s
+    Sleep       5s
     Element Text Should Be     //tbody/tr[1]/td[17]     ${DescMenssagem}
     
 E baixar o retorno do processamento do arquivo
