@@ -7,11 +7,12 @@ Library     AutoItLibrary
 ${URLOcorrencia}      https://carrefourhomo.multiembarcador.com.br/#Ocorrencias/Ocorrencia
 ${Saudacao}     Bem vindo ao Multi Embarcador
 ${NomeTelaOcorrencia}       Ocorrências de Carga
+${TelaCadastroOcorrencia}      Cadastrar Ocorrência
 ${NomeOcorrencia}       DomingosFeriados
-${CNPJ}     00766315000144
+${CNPJ}     000766315000144
 ${ObsOcorrencia}        Testes de automação para que seja facilitado o nosso dia-a-dia no trabalho.
 ${ValorOcorrencia}      350,99
-${ObservacaoCTe}        O documento tem valor fiscal, portanto emita para testes somente no ambiente de homologação.
+${ObservacaoCTe}        O documento tem valor fiscal, emita para testes somente no ambiente de homologação!
 
 *** Keywords ***
 ###CENARIO 1: Acessar a tela de Ocorrencia
@@ -35,13 +36,13 @@ Entao a tela Ocorrencia de Carga deve ser mostrada
 
 ####CENARIO 2: Gerar Ocorrencia
 Dado que eu tenha acesso para cadastra Ocorrencia
-    Element Should Contain      //*[@id="knockoutCadastroDeOcorrencia"]/div[1]/header       Cadastrar Ocorrência
+    Element Should Contain      //*[@id="knockoutCadastroDeOcorrencia"]/div[1]/header       ${TelaCadastroOcorrencia}
 
 Quando eu escolher um Tipo de Ocorrencia
     Click Button        //*[@data-bind="enable : TipoOcorrencia.enable,attr: { id: TipoOcorrencia.idBtnSearch}"]
     Wait Until Element Is Visible       //div[contains(@tabindex,"-1")]//input[contains(@data-bind,"value: Descricao.val, valueUpdate:")]
     Input Text      //div[contains(@tabindex,"-1")]//input[contains(@data-bind,"value: Descricao.val, valueUpdate:")]     ${NomeOcorrencia}     
-    Sleep       4s
+    Sleep       8s
     Click Button    //button[@data-bind="click: Pesquisar.eventClick, attr : { id: Pesquisar.id }"]
     Sleep       10s
     Wait Until Element Is Visible       //*[@id="1078"]/td[5]
@@ -54,14 +55,14 @@ E escolher a quinzena que desejo gerar a Ocorrencia
     
 E escolher o Transportador para qual quero gerar a Ocorrencia    
     Click Button        //section[10]//*[@data-bind="enable : Empresa.enable,attr: { id: Empresa.idBtnSearch}"]
-    Sleep       5s
+    Sleep       8s  
     Input Text        //input[contains(@data-bind,"value: CNPJ.val, valueUpdate: 'afterkeydown',")]     ${CNPJ}
     Sleep       9s
     Click Button        //div[contains(@class,"modal-dialog modal-lg")]//*[@class="btn btn-default btn-primary btnPesquisarFiltroPesquisa"]
     Sleep       8s
     Wait Until Element Is Visible       //*[@id="8"]/td[6]
     Click Element       //*[@id="8"]/td[6]
-    Sleep       6s
+    Sleep       8s
     
 E informar uma observacao referente a Ocorrencia    
     Input Text      //textarea[contains(@data-bind,"value: Observacao.val,enable")]        ${ObsOcorrencia}
@@ -72,12 +73,16 @@ E informar o valor da Ocorrencia
     Sleep       8s
 
 E informar uma observacao que devera ser impressa no CTE
-    Input Text      //*[@id="knockoutCadastroDeOcorrencia"]/div[2]/section[1]/div[2]/fieldset/div[5]/section        ${ObservacaoCTe}
+    Input Text      //textarea[contains(@data-bind,"value: ObservacaoCTe.val")]     ${ObservacaoCTe}
+    Sleep       3s
 
-# E clicar no botao Adicionar
-    #Click Element       //div[@id="knockoutCRUDCadastroOcorrencia"]//input[contains(@data-bind,"click: Adicionar.eventClick")]
+E clicar no botao Adicionar
+    Click Button       //div[@id="knockoutCRUDCadastroOcorrencia"]//input[contains(@data-bind,"click: Adicionar.eventClick")]
+    Sleep       10s                 
+Entao o sistema deve cadastrar a Ocorrencia com status ativo       
+    Element Should Be Visible       //*[contains(@class,"step green")]
+    Sleep       6s
 
-# # Entao o sistema deve cadastrar a Ocorrencia com sucesso       
 # //*[(@class="input")]//*[contains(@data-bind,"value: Descricao.val") and contains(@data-bind,"afterkeydown") and contains(@data-bind, "attr")]
 # //*[@class="input"]//*[@data-bind="value: Descricao.val, valueUpdate: 'afterkeydown',  attr: { maxlength: Descricao.maxlength, id : Descricao.id, }"]
-# //label[contains(@data-bind,"attr: { class: ObservacaoCTe.requiredClass}")]
+# //a[contains(@aria-expanded ,"true")]

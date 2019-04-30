@@ -1,4 +1,5 @@
-Documentation       Consulta de uma carga existente valida - Menu de Cargas.
+Documentation       Consulta de uma carga existente valida - Menu de Cargas. "O painel carrega automaticamente as cargas que tenham pendências, 
+...                 porém é possível consulta-las usando o botão Filtros de Pesquisa* informando os dados e selecionando a Situação da Carga"
 
 *** Settings ***
 Resource        ../Resources/FuncCargasME.robot
@@ -51,15 +52,15 @@ Cenario 2: Consulta de cargas
 # DADO QUE estou logado no sistema de Cargas
 # E sou um usuário administrador
 # QUANDO eu pesquisar pelas cargas existentes
-# E ordená-las por data
-# ENTÃO a listagem de cargas existentes deve ser mostrada
+# E ordena-las por data
+# ENTAO a listagem de cargas existentes deve ser mostrada
 # E essa listagem deve estar devidamente ordenada pela data
 
-# 1 - Lembre que o BDD não deve ser técnico, deve exemplificar como o usuário interage com o sistema, 
-# para ficar melhor umas ideias:
+# 1 - Lembre que o BDD não deve ser técnico, deve exemplificar como o usuário interage com o sistema. 
+# Para ficar melhor segue umas ideias:
 
-# Troque: Quando informar usuario/senha acionar o botao Acessar --- por --- Quando o usuário logar com login e senha válidos
-# Troque: Entao devo esta logado na tela Home --- por --- Entao a página home deve se mostrada
+# Troque: Quando informar usuario/senha acionar o botao Acessar --- por --- Quando o usuario logar com login e senha validos
+# Troque: Entao devo esta logado na tela Home --- por --- Entao a pagina home deve se mostrada
 
 # 2 - O cenário 2 não me parece um teste. Veja voce está testando se a tela é carregada, 
 # isso pode ser feito dentro do DADO QUE. No DADO QUE pode existir conferências tmb, sem problemas!! 
