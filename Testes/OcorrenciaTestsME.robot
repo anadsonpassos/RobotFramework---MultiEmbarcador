@@ -1,3 +1,5 @@
+Documentation       Cadastro de Ocorrencia. "As ocorrências são acontecimentos relacionados a carga, e serão reconhecidas pelos Tipos de Ocorrência   cadastrados"
+
 *** Settings ***
 Resource        ../Resources/ResourceCommon.robot
 Resource        ../Resources/FuncOcorrenciaME.robot
@@ -18,6 +20,5 @@ CENARIO 2: Gerar Ocorrencia
     E informar uma observacao referente a Ocorrencia
     E informar o valor da Ocorrencia
     E informar uma observacao que devera ser impressa no CTE
-
-    # E clicar no botao Adicionar
-    # Entao o sistema deve cadastrar a Ocorrencia com sucesso
+    E clicar no botao Adicionar
+    Entao o sistema deve cadastrar a Ocorrencia com status ativo
