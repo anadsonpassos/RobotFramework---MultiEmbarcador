@@ -63,8 +63,8 @@ QUANDO eu pesquisar a carga existente com os parametros "CargaNumero" ${NumeroCa
     #Click Element        //footer//button[contains(@class,'btn btn-default btn-primary btnPesquisarFiltroPesquisa')]
     
 ENTAO a carga existente deve ser mostrada
-    ${TEXTO}    Get Element Attribute   //span[contains(@data-bind,'Descricao.val')]      innerHTML
-Log 		${TEXTO}
+    ${TEXTO}        Get Element Attribute       //span[contains(@data-bind,'Descricao.val')]      innerHTML
+    Log 		${TEXTO}
     Should Contain      ${TEXTO}    Carga ${NumeroCarga}
 
 # E acionar o botao Cargas Novas
