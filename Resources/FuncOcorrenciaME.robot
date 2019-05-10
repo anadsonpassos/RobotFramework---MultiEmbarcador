@@ -34,7 +34,7 @@ Entao a tela Ocorrencia de Carga deve ser mostrada
     Element Should Contain      //*[@id="content"]//*[@id="widget-grid"]/div[1]/div[1]/h2      ${NomeTelaOcorrencia}
     Sleep       7s
 
-####CENARIO 2: Gerar Ocorrencia
+###CENARIO 2: Gerar Ocorrencia
 Dado que eu tenha acesso para cadastra Ocorrencia
     Element Should Contain      //*[@id="knockoutCadastroDeOcorrencia"]/div[1]/header       ${TelaCadastroOcorrencia}
 
@@ -49,10 +49,14 @@ Quando eu escolher um Tipo de Ocorrencia
     Click Element       //*[@id="1078"]/td[5]
     Sleep       8s
     
-E escolher a quinzena que desejo gerar a Ocorrencia   
-    Click Element       //select[contains(@data-bind,"options: PeriodoQuinzena.options, optionsText: 'text'")]//option[2]
+E escolher a quinzena que desejo gerar a Ocorrencia
+#Quando quiser escolher a primeira quinzena
+    Click Element       //select[contains(@data-bind,"options: PeriodoQuinzena.options, optionsText: 'text'")]//option[1]
     Sleep       8s
-    
+#Quando quiser escolher a segunda quizena   
+    # Click Element       //select[contains(@data-bind,"options: PeriodoQuinzena.options, optionsText: 'text'")]//option[2]
+    # Sleep       8s
+
 E escolher o Transportador para qual quero gerar a Ocorrencia    
     Click Button        //section[10]//*[@data-bind="enable : Empresa.enable,attr: { id: Empresa.idBtnSearch}"]
     Sleep       8s  
@@ -74,7 +78,7 @@ E informar o valor da Ocorrencia
 
 E informar uma observacao que devera ser impressa no CTE
     Input Text      //textarea[contains(@data-bind,"value: ObservacaoCTe.val")]     ${ObservacaoCTe}
-    Sleep       3s
+    Sleep       4s
 
 E clicar no botao Adicionar
     Click Button       //div[@id="knockoutCRUDCadastroOcorrencia"]//input[contains(@data-bind,"click: Adicionar.eventClick")]
@@ -82,6 +86,12 @@ E clicar no botao Adicionar
 Entao o sistema deve cadastrar a Ocorrencia com status ativo       
     Element Should Be Visible       //*[contains(@class,"step green")]
     Sleep       6s
+
+E o sistema devera armazenar o Numero da Ocorrencia    
+    ${NumeroOcorrencia}     Get Text       //*[@id="knockoutResumoOcorrencia"]/section/div/section/div/fieldset/div/section[1]/label/span      #text
+    Set Global Variable     ${NumeroOcorrencia}
+    Log    ${NumeroOcorrencia} 
+
 
 # //*[(@class="input")]//*[contains(@data-bind,"value: Descricao.val") and contains(@data-bind,"afterkeydown") and contains(@data-bind, "attr")]
 # //*[@class="input"]//*[@data-bind="value: Descricao.val, valueUpdate: 'afterkeydown',  attr: { maxlength: Descricao.maxlength, id : Descricao.id, }"]
