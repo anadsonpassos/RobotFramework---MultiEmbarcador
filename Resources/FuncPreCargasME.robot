@@ -31,7 +31,7 @@ DADO que estou na tela do Windows
     Sleep       5s
     Set Focus To Element        //input[@value='Importar']      
     Press Keys    //input[@value='Importar']    SPACE 
-    Sleep       5s
+    Sleep       7s
     #Capture Element Screenshot      //input[@value='Importar'] 
 
 QUANDO eu importar o arquivo desejado das PreCargas
@@ -73,6 +73,7 @@ E processar o arquivo escolhido
 ENTAO a tela de Importacao de Arquivo deve apresentar os arquivos processados com sucesso
     Set Focus To Element        //div[contains(@class,"modal-dialog modal-dialog-importacao")]//h4[contains(@class, "modal-title")]  
     Page Should Contain Element        //div[contains(@class,"modal-dialog modal-dialog-importacao")]//h4[contains(@class, "modal-title")]     Importação de Arquivo
+    Wait Until Element Is Visible       //tbody/tr[1]/td[17]
     Set Focus To Element        //tbody/tr[1]/td[17]
     Sleep       5s
     Element Text Should Be     //tbody/tr[1]/td[17]     ${DescMenssagem}

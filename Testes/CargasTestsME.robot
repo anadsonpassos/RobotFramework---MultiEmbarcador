@@ -10,7 +10,7 @@ Resource        ../Resources/ResourceCommon.robot
 Suite Setup     Open Browser To Login valid                ### Roda antes da suite
 Suite Teardown      Close Browser                          ### Roda depois da suite
 #Test Setup      Login Page Should Be Open                 ### Roda antes do teste
-# Test Teardown       Fechar Navegador                     ### Roda depois do teste
+#Test Teardown       Fechar Navegador                     ### Roda depois do teste
 
 *** Test Cases ***
 # Cenario 1: Validar Login

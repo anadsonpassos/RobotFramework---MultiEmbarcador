@@ -2,7 +2,7 @@
 Resource        ../Resources/ResourceCommon.robot
 Resource        ../Resources/FuncPreCargasME.robot
 Suite Setup     Open Browser To Login valid
-#Suite Teardown      Close Browser 
+#Suite Teardown      Fechar Navegador 
 
 *** Test Cases ***
 CENARIO 1: Acessar a tela de Pre-Cargas
