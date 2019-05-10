@@ -22,3 +22,5 @@ Open Browser To Login valid
     Click Button    //*[@id="login-form"]/footer/button
     Location Should Be    ${HOME URL}
     Title Should Be    Home
+Fechar Navegador
+    Close Browser
