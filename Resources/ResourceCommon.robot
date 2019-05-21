@@ -7,7 +7,7 @@ Library     SeleniumLibrary
 ${BROWSER}      Chrome
 ${DELAY}        10 seconds
 ${USERNAME}     anadson_silva
-${PASSWORD}     An@dson1031
+${PASSWORD}     An@dShow10
 ${LOGIN URL}        https://carrefourhomo.multiembarcador.com.br/Login
 ${HOME URL}     https://carrefourhomo.multiembarcador.com.br/#Home
 

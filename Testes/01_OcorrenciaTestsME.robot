@@ -9,11 +9,13 @@ Suite Setup     Open Browser To Login valid
 
 *** Test Cases ***
 CENARIO 1: Acessar a tela de Ocorrencia
+    [TAGS]  SmokTests
     Dado que eu estou logado no sistema
     Quando eu acessar menu Ocorrencias e sub-menu Ocorrencia 
     Entao a tela Ocorrencia de Carga deve ser mostrada
 
 CENARIO 2: Gerar Ocorrencia
+    [TAGS]  SmokTests
     Dado que eu tenha acesso para cadastra Ocorrencia
     Quando eu escolher um Tipo de Ocorrencia
     E escolher a quinzena que desejo gerar a Ocorrencia
