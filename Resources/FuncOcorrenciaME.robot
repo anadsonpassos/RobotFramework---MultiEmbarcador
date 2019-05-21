@@ -50,10 +50,10 @@ Quando eu escolher um Tipo de Ocorrencia
     Sleep       8s
     
 E escolher a quinzena que desejo gerar a Ocorrencia
-#Quando quiser escolher a primeira quinzena
+#Quando escolher a primeira quinzena
     Click Element       //select[contains(@data-bind,"options: PeriodoQuinzena.options, optionsText: 'text'")]//option[1]
     Sleep       8s
-#Quando quiser escolher a segunda quizena   
+#Quando escolher a segunda quizena   
     # Click Element       //select[contains(@data-bind,"options: PeriodoQuinzena.options, optionsText: 'text'")]//option[2]
     # Sleep       8s
 
@@ -85,12 +85,13 @@ E clicar no botao Adicionar
     Sleep       10s                 
 Entao o sistema deve cadastrar a Ocorrencia com status ativo       
     Element Should Be Visible       //*[contains(@class,"step green")]
-    Sleep       6s
+    Sleep       8s
 
 E o sistema devera armazenar o Numero da Ocorrencia    
     ${NumeroOcorrencia}     Get Text       //*[@id="knockoutResumoOcorrencia"]/section/div/section/div/fieldset/div/section[1]/label/span      #text
     Set Global Variable     ${NumeroOcorrencia}
-    Log    ${NumeroOcorrencia} 
+    Log    ${NumeroOcorrencia}
+    Sleep       3s 
 
 
 # //*[(@class="input")]//*[contains(@data-bind,"value: Descricao.val") and contains(@data-bind,"afterkeydown") and contains(@data-bind, "attr")]
