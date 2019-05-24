@@ -12,7 +12,7 @@ CENARIO 1: Acessar a tela de Autorizacao de Ocorrencia
     [TAGS]  SmokTests
     Dado que eu estou logado no sistema
     Quando eu acessar menu Ocorrencias e sub-menu Autorizacao 
-    Entao a tela Autorizacao de Ocorrencias de Carga deve ser mostrada
+    Entao a tela Autorizacao de Ocorrencias de Carga deve ser mostradad
 
 CENARIO 2: Consultar Ocorrencia Gerada
     [TAGS]  SmokTests
