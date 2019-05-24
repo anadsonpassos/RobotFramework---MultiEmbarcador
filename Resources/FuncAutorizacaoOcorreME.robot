@@ -23,7 +23,7 @@ Dado que eu estou logado no sistema
 Quando eu acessar menu Ocorrencias e sub-menu Autorizacao 
     Go To       ${URLAutorizacaoOcorrencia}
 
-Entao a tela Autorizacao de Ocorrencias de Carga deve ser mostrada
+Entao a tela Autorizacao de Ocorrencias de Carga deve ser exibida
     Element Should Be Focused        //html//body[@class="smart-style-0 desktop-detected"]
     Sleep       7s
     Element Should Contain      //*[@id="widget-grid"]/div[1]/div/h2      ${NomeTelaAutorizacaoOcorre}
