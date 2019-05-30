@@ -18,4 +18,11 @@ CENARIO 2: Pesquisar uma carga para realizar o cancelamento
     Quando eu pesquisar pelo Transportador que quero cancelar a carga
     E clicar no botao Pesquisar
     Entao o sistema devera exibir a grid com as cargas
+
+CENARIO 3: Pesquisar uma carga para realizar o cancelamento
+    Dado que eu tenha cargas para serem canceladas
+    Quando eu informar o motivo do cancelamento da carga
+    E marcar para que não seja duplicada
+    E confirmar o cancelamento da carga
+    #Entao o sistema devera cancelar a carga com sucesso
    
